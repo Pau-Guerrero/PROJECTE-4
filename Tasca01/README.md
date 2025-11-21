@@ -49,3 +49,5 @@ El document final ha de contenir:
 - INCIBE: [Copias de seguridad. Guía para el empresario](https://www.incibe.es)  
 - Xataka: [Backup 3-2-1, método definitivo](https://youtu.be/PM_M4Iz6I4o?si=F7DRyDDTZE3hjWn8) (YouTube, Setembre 2017)
 
+## ENLLAÇ INFORME
+[](infomre.md)
