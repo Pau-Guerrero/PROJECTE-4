@@ -40,3 +40,16 @@ Aquesta experiència accelerada et fa créixer, et defineix i et transforma en u
 EverPia 3 és la teva oportunitat per **sortir per la porta gran**: demostrar que has evolucionat, que tens eines pròpies i que estàs preparat per afrontar reptes amb confiança i maduresa.
 
 ---
+
+## ENLLAÇOS
+
+[Tasca01](Tasca01)  
+[Tasca02](Tasca02)  
+[Tasca03](Tasca03)  
+[Tasca04](Tasca04)  
+[Tasca05](Tasca05)  
+[Tasca06](Tasca06)  
+[Tasca07](Tasca07)  
+[Tasca08](Tasca08)  
+[Tasca09](Tasca09)  
+[Tasca10](Tasca10)
