@@ -50,4 +50,4 @@ El document final ha de contenir:
 - Xataka: [Backup 3-2-1, método definitivo](https://youtu.be/PM_M4Iz6I4o?si=F7DRyDDTZE3hjWn8) (YouTube, Setembre 2017)
 
 ## ENLLAÇ INFORME
-[Informe](infomre.md)
+[Informe](informe.md)
