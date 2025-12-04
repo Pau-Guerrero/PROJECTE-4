@@ -99,8 +99,20 @@ ssh <nom d'usuari creat>@<IP del servidor>
 ```
 Si apareix “Access denied” significa que la configuració és correcta.
 ![](img/image07.png)
+# 7. Tunel SSH
 
-# 6.Configuració de xarxa al client Windows
+Un túnel SSH ens permet redirigir el tràfic de xarxa d'una aplicació local a través de la connexió segura amb el servidor. Això és útil per navegar de manera segura o accedir a serveis restringits des de fora de la xarxa local.
+
+Per crear un túnel dinàmic amb port forwarding, executeu la comanda següent des del client:
+
+```bash
+ssh -D 9876 usuari@192.168.56.101
+```
+
+- -D 9876: Configura un SOCKS proxy local al port 9876 del client.
+- usuari@192.168.56.101: Dades d'accés al servidor SSH.
+![](img/image24.png)
+# 8.Configuració de xarxa al client Windows
 
 Ara entrarem al client de Windows i configurarem la xarxa segons la informació de la imatge.
 
@@ -114,7 +126,7 @@ Passos a seguir:
 
 ![](img/image08.png)
 
-# 7. Instal·lació i ús de Wireshark
+# 9. Instal·lació i ús de Wireshark
 Després instal·larem **Wireshark** seguint aquests passos:
 
 1. Anar a la pàgina oficial de Wireshark i descarregar el programa.
@@ -123,8 +135,58 @@ Després instal·larem **Wireshark** seguint aquests passos:
 4. Començar a capturar paquets a la interfície de xarxa corresponent.
 
 ![](img/image09.png)
+# 10. Clau SSH (Keys)
 
-# 8. Instal·lació del Servidor OpenSSH a Windows
+Per permetre l’accés al servidor Ubuntu des del client sense necessitat de contrasenya, generarem un parell de claus SSH. Obrim **PowerShell** al client i executem:
+
+```bash
+ssh-keygen -t rsa
+```
+![](img/image18.png)
+
+Per comprovar que les claus SSH s’han creat correctament, podem llistar el contingut de la carpeta `.ssh` al client:
+
+```bash
+ls .\.ssh\
+```
+![](img/image19.png)
+
+Ara copiem la clau pública generada al servidor Ubuntu perquè es pugui autenticar sense contrasenya:
+
+```bash
+scp .\.ssh\id_rsa.pub <usuari>@<IP_del_servidor>:
+```
+![](img/image20.png)
+
+Ara configurarem el servidor per acceptar l'autenticació per clau pública:
+
+1. Creem (o assegurem que existeix) el fitxer `authorized_keys` al servidor Ubuntu:
+```bash
+touch .ssh/authorized_keys
+```
+
+Comprovem els fitxers de la carpeta .ssh:
+```bash
+ls
+```
+
+Visualitzem la clau pública generada al client per afegir-la al servidor:
+```bash
+cat id_rsa.pub
+```
+![](img/image21.png)
+
+Afegim la clau pública del client al fitxer `authorized_keys` del servidor per habilitar l'accés SSH sense contrasenya:
+
+```bash
+cat id_rsa.pub >> ~/.ssh/authorized_keys
+```
+![](img/image22.png)
+
+Per ultim comprovem que podem entrar sense contrasenya.
+![](img/image23.png)
+
+# 11. Instal·lació del Servidor OpenSSH a Windows
 Ara instal·larem el **Servidor OpenSSH** a Windows:
 
 1. Obrir **Configuració** de Windows.
@@ -134,7 +196,7 @@ Ara instal·larem el **Servidor OpenSSH** a Windows:
 
 ![](img/image10.png)
 
-## 9. Habilitar el servei SSH a Windows
+## 12. Habilitar el servei SSH a Windows
 
 Obrim **PowerShell com a administrador** i executem la comanda:
 
@@ -143,7 +205,7 @@ Start-Service sshd
 ```
 ![](img/image15.png)
 
-## 10. Configurar el servei SSH per iniciar automàticament a Windows
+## 13. Configurar el servei SSH per iniciar automàticament a Windows
 
 Per assegurar que el servei SSH s’iniciï automàticament a l’arrencada del sistema, obrim **PowerShell com a administrador** i executem:
 
@@ -152,7 +214,7 @@ Set-Service -Name sshd -StartupType 'Automatic'
 ```
 ![](img/image16.png)
 
-## 11. Connexió al servidor des del client Windows
+## 14. Connexió al servidor des del client Windows
 
 Per connectar-nos al servidor Ubuntu des del client Windows amb SSH, obrim **PowerShell** i executem la comanda:
 
