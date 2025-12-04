@@ -1,6 +1,23 @@
 # GUIA SSH
 ---
 
+## 0. Configuració inicial de les màquines virtuals
+
+Abans de començar amb SSH, configurem les dues màquines virtuals:
+
+- **Màquina 1:** Ubuntu Server  
+- **Màquina 2:** Windows (client normal)  
+
+**Configuració de xarxa:**  
+- Afegir **un adaptador NAT** per a l'accés a Internet.  
+- Afegir **un adaptador en mode Anfitrió (Host-only)** per a la comunicació directa entre les dues màquines.
+
+
+![](img/image11.png)
+![](img/image12.png)
+![](img/image13.png)
+![](img/image14.png)
+
 ## 1. Instal·lació del servei SSH
 
 Per començar, instal·lem el servei SSH amb la comanda:
