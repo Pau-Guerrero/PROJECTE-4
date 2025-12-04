@@ -134,7 +134,7 @@ Després instal·larem **Wireshark** seguint aquests passos:
 3. Obrir Wireshark.
 4. Començar a capturar paquets a la interfície de xarxa corresponent.
 
-![](img/image09.png)
+![](img/image25.png)
 # 10. Clau SSH (Keys)
 
 Per permetre l’accés al servidor Ubuntu des del client sense necessitat de contrasenya, generarem un parell de claus SSH. Obrim **PowerShell** al client i executem:
