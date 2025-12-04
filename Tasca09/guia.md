@@ -124,7 +124,7 @@ Després instal·larem **Wireshark** seguint aquests passos:
 
 ![](img/image09.png)
 
-# 9. Instal·lació del Servidor OpenSSH a Windows
+# 8. Instal·lació del Servidor OpenSSH a Windows
 Ara instal·larem el **Servidor OpenSSH** a Windows:
 
 1. Obrir **Configuració** de Windows.
@@ -133,3 +133,31 @@ Ara instal·larem el **Servidor OpenSSH** a Windows:
 4. Seleccionar-la i prémer **Instal·lar**.
 
 ![](img/image10.png)
+
+## 9. Habilitar el servei SSH a Windows
+
+Obrim **PowerShell com a administrador** i executem la comanda:
+
+```bash
+Start-Service sshd
+```
+![](img/image15.png)
+
+## 10. Configurar el servei SSH per iniciar automàticament a Windows
+
+Per assegurar que el servei SSH s’iniciï automàticament a l’arrencada del sistema, obrim **PowerShell com a administrador** i executem:
+
+```bash
+Set-Service -Name sshd -StartupType 'Automatic'
+```
+![](img/image16.png)
+
+## 11. Connexió al servidor des del client Windows
+
+Per connectar-nos al servidor Ubuntu des del client Windows amb SSH, obrim **PowerShell** i executem la comanda:
+
+```bash
+ssh <nom_del_usuari>@<IP_del_servidor>
+```
+
+![](img/image17.png)
