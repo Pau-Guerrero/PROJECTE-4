@@ -116,13 +116,14 @@ Definim quins clients poden accedir i amb quines opcions. L’arxiu /etc/exports
 sudo nano /etc/exports
 ```
 
-Contenido de ejemplo:
+Exemple:
+```bash
+/srv/nfs/admin_tools  192.168.56.106(rw,sync,no_subtree_check,root_squash)
+/srv/nfs/dev-projectes 192.168.56.106(rw,sync,no_subtree_check,root_squash)
+```
 
-    /srv/nfs/admin_tools  192.168.56.106(rw,sync,no_subtree_check,root_squash)
-    /srv/nfs/dev-projectes 192.168.56.106(rw,sync,no_subtree_check,root_squash)
-
-![](img/image012.png)
-![](img/image011.png)
+![](img/image11.png)
+![](img/image12.png)
 
 ***
 
