@@ -112,6 +112,13 @@ ls -ld /srv/nfs/dev-projectes /srv/nfs/admin_tools
 
 Definim quins clients poden accedir i amb quines opcions. L’arxiu /etc/exports és la configuració principal de NFS.
 
+Primer mirarem la IP del client amb:
+```bash
+ip a
+```
+![](img/image11.png)
+
+y després:
 ```bash
 sudo nano /etc/exports
 ```
@@ -122,7 +129,6 @@ Exemple:
 /srv/nfs/dev-projectes 192.168.56.106(rw,sync,no_subtree_check,root_squash)
 ```
 
-![](img/image11.png)
 ![](img/image12.png)
 
 ***
