@@ -3,7 +3,7 @@
 
 ## 1) Instal·lar el servei NFS
 
-Instal·lem el servei que permet compartir carpetes per xarxa mitjançant NFS. El paquet inclou el dimoni `nfs-kernel-server`.
+Instal·lem el servei que permet compartir carpetes per xarxa mitjançant NFS. El paquet inclou el dimoni `nfs-kernel-server` que és l'encarregat de gestionar les exportacions de carpetes i les connexions dels clients.
 
 ```bash
 sudo apt update
@@ -16,7 +16,7 @@ sudo apt install nfs-kernel-server
 
 ## 2) Crear els grups d'accés
 
-Els grups ens permetran controlar qui té permís d’entrar a cada recurs compartit.
+Els grups ens permetran controlar qui té permís d’entrar a cada recurs compartit. Crear devs i admins facilita gestionar permisos de manera centralitzada.
 
 ```bash
 sudo groupadd devs
@@ -46,10 +46,9 @@ sudo adduser admin01 admins
 
 ***
 
-## 4) Fixar UIDs 
+## 4) Fixar UIDs
 
-NFS treballa amb UID/GID, no amb noms d’usuari. Per això fixem els mateixos IDs per evitar problemes de permisos.
-
+NFS treballa amb UID/GID, no amb noms d’usuari. Fixar aquests números assegura que els permisos són consistents entre servidor i client.
 ```bash
 sudo usermod -u 1001 dev01
 sudo usermod -u 1002 admin01
@@ -59,9 +58,9 @@ sudo usermod -u 1002 admin01
 
 ***
 
-##5) Crear les carpetes que compartirem
+## 5) Crear les carpetes que compartirem
 
-Les guardem dins /srv/nfs/, una ruta estàndard per serveis.
+Les guardem dins /srv/nfs/, una ruta estàndard per serveis, perquè sigui fàcil de localitzar i gestionar.
 
 ```bash
 sudo mkdir -p /srv/nfs/dev-projectes
@@ -74,7 +73,7 @@ sudo mkdir -p /srv/nfs/admin_tools
 
 ## 6) Assignar permisos a dev-projectes
 
-Apliquem el grup devs, i el setgid perquè tots els fitxers creats heretin automàticament el grup.
+Apliquem el grup devs, i el setgid (2 en 2770) perquè tots els fitxers creats dins la carpeta heretin el grup.
 
 ```bash
 sudo chown root:devs /srv/nfs/dev-projectes
@@ -100,8 +99,7 @@ sudo chmod 2770        /srv/nfs/admin_tools
 
 ## 8) Verificar permisos
 
-Comprovem que realment s’han aplicat els permisos i grups correctes.
-
+Comprovem que els permisos i grups s’han aplicat correctament.
 ```bash
 ls -ld /srv/nfs/dev-projectes /srv/nfs/admin_tools
 ```
@@ -112,7 +110,7 @@ ls -ld /srv/nfs/dev-projectes /srv/nfs/admin_tools
 
 ## 9) Configurar exportacions a /etc/exports
 
-Definim quins clients poden accedir i amb quines opcions.
+Definim quins clients poden accedir i amb quines opcions. L’arxiu /etc/exports és la configuració principal de NFS.
 
 ```bash
 sudo nano /etc/exports
@@ -130,8 +128,7 @@ Contenido de ejemplo:
 
 ## 10) Aplicar els canvis d’exportació
 
-Recarreguem les exportacions.
-
+Recarreguem les exportacions perquè entrin en vigor.
 ```bash
 sudo exportfs -ra
 # (opcional) desexportar temporalmente
@@ -145,7 +142,7 @@ sudo exportfs -u /srv/nfs/dev-projectes
 
 ## 11) Instal·lar el client NFS
 
-El client només necessita nfs-common.
+El client només necessita les utilitats bàsiques per muntar recursos NFS.
 
 ```bash
 sudo apt update
@@ -158,7 +155,7 @@ sudo apt install nfs-common
 
 ## 12) Crear grups amb els mateixos GID que al servidor
 
-Això assegura que els permisos coincideixen exactament.
+Per garantir que els permisos coincideixin exactament.
 
 ```bash
 sudo groupadd -g 1001 devs
@@ -171,7 +168,7 @@ sudo groupadd -g 1002 admins
 
 ## 13) Crear usuaris amb UID fixos
 
-Cal que coincideixin amb els del servidor.
+Els UID fixos asseguren que els fitxers es mostren amb la propietat correcta al client.
 
 ```bash
 sudo useradd -m -u 1001 -g 1001 dev01
@@ -197,7 +194,7 @@ sudo mount -t nfs 192.168.56.101:/srv/nfs/dev-projectes /mnt/dev-projectes
 
 ## 15) Muntar admin_tools
 
-Fem la mateixa prova per al segon recurs.
+Repetim el procés per al directori dels administradors.
 
 ```bash
 sudo mkdir -p /mnt/admin_tools
@@ -210,7 +207,7 @@ sudo mount -t nfs 192.168.56.101:/srv/nfs/admin_tools /mnt/admin_tools
 
 ## 16) Fer el muntatge permanent a /etc/fstab
 
-Perquè les unitats es muntin automàticament quan la màquina arrenca.
+Perquè els recursos es muntin automàticament a l’arrencada del sistema.
 
 ```bash
 sudo nano /etc/fstab
@@ -227,7 +224,7 @@ Ejemplo:
 
 ## 17) Comprovar mount -a i corregir errors
 
-Si algun punt de muntatge no existeix, l’hem de crear abans.
+Si algun punt de muntatge no existeix, cal crear-lo abans.
 
 ```bash
 sudo mount -a
