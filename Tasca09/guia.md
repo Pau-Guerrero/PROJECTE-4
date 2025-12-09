@@ -149,7 +149,7 @@ sudo apt update
 sudo apt install nfs-common
 ```
 
-![](img/image19.png)
+![](img/image14.png)
 
 ***
 
@@ -218,7 +218,7 @@ Ejemplo:
     192.168.56.101:/srv/nfs/admin_tools  /mnt/admin_tools  nfs  defaults  0 0
     192.168.56.101:/srv/nfs/dev-projectes /mnt/dev-projectes nfs defaults 0 0
 
-![](img/image14.png)
+![](img/image19.png)
 
 ***
 
