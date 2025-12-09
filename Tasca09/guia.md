@@ -280,3 +280,28 @@ sudo exportfs -v
 mount | grep nfs
 ```
 
+¡Sí! Ese **df -h** sería el **último punto** de la guía.  
+Lo añado como **Paso 21: verificación final de montajes y espacio**, con explicación breve y la imagen correspondiente.
+
+***
+
+## 21) Verificació final: muntatges actius i espai
+
+Confirma que els dos recursos NFS estan correctament muntats i que el client veu l’espai disponible. Si apareixen amb la ruta del servidor (per exemple, 192.168.56.101:/srv/nfs/...) i el punt de muntatge (/mnt/...), tot està correcte.
+
+```bash
+# Ver el espacio y confirmar los puntos de montaje
+df -h | grep /mnt
+
+# (Opcional) ver montajes NFS activos
+mount | grep -E 'dev-projectes|admin_tools'
+findmnt -t nfs
+
+# (Opcional) prueba rápida de escritura/lectura
+sudo -u dev01 touch /mnt/dev-projectes/verificacion.txt
+ls -l /mnt/dev-projectes/verificacion.txt
+rm /mnt/dev-projectes/verificacion.txt
+```
+
+![](img/image21.png)
+
