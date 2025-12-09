@@ -9,7 +9,7 @@ sudo apt update
 sudo apt install nfs-kernel-server
 ```
 
-![](image09.png)
+![](img/image09.png)
 
 ***
 
@@ -22,7 +22,7 @@ sudo groupadd devs
 sudo groupadd admins
 ```
 
-![](image01.png)
+![](img/image01.png)
 
 ***
 
@@ -40,8 +40,8 @@ sudo adduser admin01
 sudo adduser admin01 admins
 ```
 
-![](image02.png)
-![](image03.png)
+![](img/image02.png)
+![](img/image03.png)
 
 ***
 
@@ -54,7 +54,7 @@ sudo usermod -u 1001 dev01
 sudo usermod -u 1002 admin01
 ```
 
-![](image04.png)
+![](img/image04.png)
 
 ***
 
@@ -67,7 +67,7 @@ sudo mkdir -p /srv/nfs/dev-projectes
 sudo mkdir -p /srv/nfs/admin_tools
 ```
 
-![](image05.png)
+![](img/image05.png)
 
 ***
 
@@ -80,7 +80,7 @@ sudo chown root:devs /srv/nfs/dev-projectes
 sudo chmod 2770      /srv/nfs/dev-projectes
 ```
 
-![](image06.png)
+![](img/image06.png)
 
 ***
 
@@ -93,7 +93,7 @@ sudo chown root:admins /srv/nfs/admin_tools
 sudo chmod 2770        /srv/nfs/admin_tools
 ```
 
-![](image07.png)
+![](img/image07.png)
 
 > **Referencia de error común:** usar `0755` (lectura para “otros”) **abre la carpeta a todo el mundo**.  
 > **Imagen del caso no recomendado:** `image10.png`.
@@ -108,7 +108,7 @@ Comprueba que ves `drwxrws---` (la `s` indica setgid) y los grupos correctos en 
 ls -ld /srv/nfs/dev-projectes /srv/nfs/admin_tools
 ```
 
-![](image08.png)
+![](img/image08.png)
 
 ***
 
@@ -125,8 +125,8 @@ Contenido de ejemplo:
     /srv/nfs/admin_tools  192.168.56.106(rw,sync,no_subtree_check,root_squash)
     /srv/nfs/dev-projectes 192.168.56.106(rw,sync,no_subtree_check,root_squash)
 
-![](image012.png)
-![](image011.png)
+![](img/image012.png)
+![](img/image011.png)
 
 ***
 
@@ -141,7 +141,7 @@ sudo exportfs -u /srv/nfs/admin_tools
 sudo exportfs -u /srv/nfs/dev-projectes
 ```
 
-![](image13.png)
+![](img/image13.png)
 
 ***
 
@@ -154,7 +154,7 @@ sudo apt update
 sudo apt install nfs-common
 ```
 
-![](image19.png)
+![](img/image19.png)
 
 ***
 
@@ -167,7 +167,7 @@ sudo groupadd -g 1001 devs
 sudo groupadd -g 1002 admins
 ```
 
-![](image17.png)
+![](img/image17.png)
 
 ***
 
@@ -180,7 +180,7 @@ sudo useradd -m -u 1001 -g 1001 dev01
 sudo useradd -m -u 1002 -g 1002 admin01
 ```
 
-![](image18.png)
+![](img/image18.png)
 
 ***
 
@@ -193,7 +193,7 @@ sudo mkdir -p /mnt/dev-projectes
 sudo mount -t nfs 192.168.56.101:/srv/nfs/dev-projectes /mnt/dev-projectes
 ```
 
-![](image16.png)
+![](img/image16.png)
 
 ***
 
@@ -206,7 +206,7 @@ sudo mkdir -p /mnt/admin_tools
 sudo mount -t nfs 192.168.56.101:/srv/nfs/admin_tools /mnt/admin_tools
 ```
 
-![](image15.png)
+![](img/image15.png)
 
 ***
 
@@ -223,7 +223,7 @@ Ejemplo:
     192.168.56.101:/srv/nfs/admin_tools  /mnt/admin_tools  nfs  defaults  0 0
     192.168.56.101:/srv/nfs/dev-projectes /mnt/dev-projectes nfs defaults 0 0
 
-![](image14.png)
+![](img/image14.png)
 
 ***
 
@@ -239,7 +239,7 @@ sudo systemctl daemon-reload
 sudo mount -a
 ```
 
-![](image20.png)
+![](img/image20.png)
 
 ***
 
@@ -269,7 +269,7 @@ sudo chmod 2770 /srv/nfs/admin_tools
 sudo chmod 2770 /srv/nfs/dev-projectes
 ```
 
-![](image10.png)
+![](img/image10.png)
 
 ***
 
