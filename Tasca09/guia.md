@@ -95,9 +95,6 @@ sudo chmod 2770        /srv/nfs/admin_tools
 
 ![](img/image07.png)
 
-> **Referencia de error común:** usar `0755` (lectura para “otros”) **abre la carpeta a todo el mundo**.  
-> **Imagen del caso no recomendado:** `image10.png`.
-
 ***
 
 ## 8) Verificar permisos
