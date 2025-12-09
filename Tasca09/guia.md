@@ -131,9 +131,6 @@ Contenido de ejemplo:
 Recarreguem les exportacions perquè entrin en vigor.
 ```bash
 sudo exportfs -ra
-# (opcional) desexportar temporalmente
-sudo exportfs -u /srv/nfs/admin_tools
-sudo exportfs -u /srv/nfs/dev-projectes
 ```
 
 ![](img/image13.png)
@@ -213,7 +210,7 @@ Perquè els recursos es muntin automàticament a l’arrencada del sistema.
 sudo nano /etc/fstab
 ```
 
-Ejemplo:
+Exemple:
 
     192.168.56.101:/srv/nfs/admin_tools  /mnt/admin_tools  nfs  defaults  0 0
     192.168.56.101:/srv/nfs/dev-projectes /mnt/dev-projectes nfs defaults 0 0
@@ -228,10 +225,6 @@ Si algun punt de muntatge no existeix, cal crear-lo abans.
 
 ```bash
 sudo mount -a
-# Si falla por punto de montaje inexistente:
-sudo mkdir -p /mnt/dev-projectes /mnt/admin_tools
-sudo systemctl daemon-reload
-sudo mount -a
 ```
 
 ![](img/image20.png)
@@ -243,11 +236,11 @@ sudo mount -a
 Comprovem que els fitxers nous hereten el grup correcte.
 
 ```bash
-# Como dev01:
+# Com a dev01:
 sudo -u dev01 touch /mnt/dev-projectes/prueba_dev.txt
 ls -l /mnt/dev-projectes/prueba_dev.txt
 
-# Como admin01:
+# Com a admin01:
 sudo -u admin01 touch /mnt/admin_tools/prueba_admin.txt
 ls -l /mnt/admin_tools/prueba_admin.txt
 ```
@@ -276,7 +269,7 @@ Per fer diagnòstics ràpids:
 # Servidor
 sudo exportfs -v
 
-# Cliente
+# Client
 mount | grep nfs
 ```
 
@@ -290,9 +283,7 @@ Lo añado como **Paso 21: verificación final de montajes y espacio**, con expli
 Confirma que els dos recursos NFS estan correctament muntats i que el client veu l’espai disponible. Si apareixen amb la ruta del servidor (per exemple, 192.168.56.101:/srv/nfs/...) i el punt de muntatge (/mnt/...), tot està correcte.
 
 ```bash
-# Ver el espacio y confirmar los puntos de montaje
 df -h | grep /mnt
-
 ```
 
 ![](img/image21.png)
