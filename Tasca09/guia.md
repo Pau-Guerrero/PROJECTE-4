@@ -293,14 +293,6 @@ Confirma que els dos recursos NFS estan correctament muntats i que el client veu
 # Ver el espacio y confirmar los puntos de montaje
 df -h | grep /mnt
 
-# (Opcional) ver montajes NFS activos
-mount | grep -E 'dev-projectes|admin_tools'
-findmnt -t nfs
-
-# (Opcional) prueba rápida de escritura/lectura
-sudo -u dev01 touch /mnt/dev-projectes/verificacion.txt
-ls -l /mnt/dev-projectes/verificacion.txt
-rm /mnt/dev-projectes/verificacion.txt
 ```
 
 ![](img/image21.png)
