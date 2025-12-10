@@ -83,7 +83,76 @@ Els resultats de la restauració són els següents:
 
 
 ## LINUX
+### 1 Instal.lar màquina virtual
+Crearem una màquina virtual amb Ubuntu Server i afegirem un disc dur de 10 GB per emmagatzemar les còpies de seguretat.
+
+![](img/image19.png)
+
+### 2 Formatejar
+Formategem el disc dur amb el sistema de fitxers XFS:
+```bash
+sudo mkfs.xfs -f /dev/sdb1
+```
+![](img/image20.png)
+
+### 3 UUID
+Obtenim el UUID del disc per afegir-lo al fitxer fstab i garantir que es monti correctament:
+```bash
+sudo blkid /dev/sdb1
+```
+
+![](img/image21.png)
+
+Copiem el UUID obtingut i obrim el fitxer fstab:
+```bash
+sudo nano /etc/fstb
+```
+Afegim una línia com aquesta per configurar el muntatge automàtic:
+```bash
+UUID=xxxx-xxxx /media/backup xfs noauto,defaults 0 2
+```  
+![](img/image22.png)
+
+### 4 Instal.lar duplicity
+Instal·lem l’eina de còpia de seguretat Duplicity:
+```bash
+sudo apt install duplicity
+```
+![](img/image23.png)
+
+### 5 Crear usuaris
+Creem els usuaris amb els seus directoris personals per provar backups separats:
+
+```bash
+sudo adduser user1
+sudo adduser user2
+```
+
+![](img/image24.png)
+![](img/image25.png)
+
+### 6 Crear archius
+Generem quatre arxius de 10 MB cadascun per simular dades que es copiaran:
+```bash
+fallocate -l 10M file1.bin
+fallocate -l 10M file2.bin
+fallocate -l 10M file3.bin
+fallocate -l 10M file4.bin
+```
+![](img/image26.png)
+
+### 7 Copia
+Primer establim la passphrase per xifrar les dades:
+```bash
+export PASSPHRASE='contrasenya'
+```
+![](img/image27.png)
 
 
+A continuació, fem la còpia completa del directori /home al directori de backup:
+```bash
+sudo duplicity full /home file:///media/backup
+```
 
+![](img/image28.png)
 
