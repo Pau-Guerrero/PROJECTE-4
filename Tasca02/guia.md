@@ -82,6 +82,8 @@ Els resultats de la restauració són els següents:
 ![](img/image18.png)
 
 
+## LINUX
+
 
 
 
