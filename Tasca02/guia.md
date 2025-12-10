@@ -156,3 +156,27 @@ sudo duplicity full /home file:///media/backup
 
 ![](img/image28.png)
 
+
+### 8 Remover axius
+per borrar els arxius creats anteriorment em de posar:
+```bash
+rm /home/usuari/file1.bin
+rm /home/usuari/file2.bin
+rm /home/usuari/file3.bin
+rm /home/usuari/file4.bin
+```
+![](img/image29.png)
+
+### 9 Restaurar els fitxers
+Per restaurar haurem de posar:
+```bash
+duplicity restore file:///media/backup /home/restore_test
+```
+![](img/image30.png)
+
+y per comprobar-ho:
+```bash
+ls -lh /home/restore_test/usuari
+```
+![](img/image31.png)
+
