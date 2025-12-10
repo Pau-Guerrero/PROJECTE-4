@@ -200,4 +200,10 @@ duplicity incremental /home file:///media/backup
 ![](img/image33.png)
 
 
+### 11 Desmontar
+per demsontar
+```bash
+umount /media/backup
+```
+![](img/image34.png)
 
