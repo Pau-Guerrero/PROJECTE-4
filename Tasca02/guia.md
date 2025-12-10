@@ -158,7 +158,7 @@ sudo duplicity full /home file:///media/backup
 
 
 ### 8 Remover axius
-per borrar els arxius creats anteriorment em de posar:
+Per simular la pèrdua de dades, eliminem els fitxers creats anteriorment:
 ```bash
 rm /home/usuari/file1.bin
 rm /home/usuari/file2.bin
@@ -168,15 +168,36 @@ rm /home/usuari/file4.bin
 ![](img/image29.png)
 
 ### 9 Restaurar els fitxers
-Per restaurar haurem de posar:
+Per recuperar els fitxers, utilitzem la comanda de restauració de Duplicity:
 ```bash
 duplicity restore file:///media/backup /home/restore_test
 ```
 ![](img/image30.png)
 
-y per comprobar-ho:
+Finalment, comprovem que els fitxers s’han restaurat correctament:
 ```bash
 ls -lh /home/restore_test/usuari
 ```
 ![](img/image31.png)
+
+
+### 10 Copies incrementals
+Per practicar amb backups incrementals, primer creem un nou fitxer de prova:
+```bash
+fallocate -l 4M file5.bin
+```
+![](img/image32.png)
+
+A continuació configurem la passphrase per xifrar el backup:
+```bash
+export PASSPHRASE='contrasenya_segura'
+```
+I fem la còpia incremental, que només guardarà els canvis respecte al backup complet anterior:
+```bash
+duplicity incremental /home file:///media/backup
+```
+
+![](img/image33.png)
+
+
 
