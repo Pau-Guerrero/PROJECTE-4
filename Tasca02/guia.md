@@ -207,3 +207,84 @@ umount /media/backup
 ```
 ![](img/image34.png)
 
+
+### 12 Fullbackup.sh
+Crearem un script que automatitza el backup complet dels fitxers del sistema. Obrim el fitxer /root/fullbackup.sh i hi afegim el següent contingut:
+```bash
+#!/bin/bash
+set -e
+DEVICE="/dev/sdb1"
+MOUNTPOINT="/media/backup"
+LOG="/var/log/duplicity_full.log"
+export PASSPHRASE="contrasenya_segura"
+# Muntar (fa servir fstab si tens noauto)
+mount "$MOUNTPOINT" || mount "$DEVICE" "$MOUNTPOINT"
+date >> "$LOG"
+echo "Inici full backup: $(date)" >> "$LOG"
+duplicity full /home file://"$MOUNTPOINT"/backup >> "$LOG" 2>&1
+echo "Finalitzat full backup: $(date)" >> "$LOG"
+sync
+umount "$MOUNTPOINT"
+```
+
+![](img/image36.png)
+
+
+Un cop creat, fem l’script executable:
+```bash
+chmod +x /root/fullbackup.sh
+```
+
+![](img/image37.png)
+
+Finalment, programem l’execució automàtica cada diumenge a les 23:00 amb cron:
+```bash
+sudo crontab -e
+```
+
+Afegim la línia següent:
+```bash
+0 23 * * 0 /root/fullbackup.sh
+```
+![](img/image38.png)
+
+
+### 13 
+Crearem un script que automatitza el backup complet dels fitxers del sistema. Obrim el fitxer /root/incrementalbackup.sh i hi afegim el següent contingut:
+```bash
+#!/bin/bash
+set -e
+DEVICE="/dev/sdb1"
+MOUNTPOINT="/media/backup"
+LOG="/var/log/duplicity_incr.log"
+export PASSPHRASE="contrasenya_segura"
+# Muntar
+mount "$MOUNTPOINT" || mount "$DEVICE" "$MOUNTPOINT"
+date >> "$LOG"
+echo "Inici incremental backup: $(date)" >> "$LOG"
+duplicity incremental /home file://"$MOUNTPOINT"/backup >> "$LOG" 2>&1
+echo "Finalitzat incremental backup: $(date)" >> "$LOG"
+sync
+umount "$MOUNTPOINT"
+```
+
+![](img/image39.png)
+
+
+Un cop creat, fem l’script executable:
+```bash
+chmod +x /root/fullbackup.sh
+```
+
+![](img/image40.png)
+
+Finalment, programem l’execució automàtica cada diumenge a les 23:00 amb cron:
+```bash
+sudo crontab -e
+```
+
+Afegim la línia següent:
+```bash
+0 23 * * 1-6 /root/incrementalbackup.sh
+```
+![](img/image41.png)
