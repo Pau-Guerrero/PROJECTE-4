@@ -90,7 +90,14 @@ Quan intentem connectar-nos per primera vegada amb l’Escriptori Remot, el sist
 ---
 
 ## 4. Resultat final
-Una vegada fet tot això quedara aixi:
+Després de configurar tot el procés, la connexió per escriptori remot ha de funcionar correctament. Això significa:
+
+- Des de la màquina Zorin podrem veure l’escriptori de Windows 11 tal com si estiguéssim davant del PC físic.
+
+- Podem moure el ratolí, obrir programes i accedir a fitxers amb els permisos del compte amb què ens hem connectat.
+
+- La connexió és segura gràcies al certificat acceptat anteriorment.
+
 
 ![](img/image06.png)
 
