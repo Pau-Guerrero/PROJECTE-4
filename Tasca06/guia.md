@@ -29,13 +29,72 @@ Per començar, necessitarem dues màquines virtuals per practicar el suport remo
 
  - Comprovar que es poden fer ping entre les dues màquines per assegurar que es veuen.
 
+--- 
+
 ## 2) Remot
 
-Ara entrarem a windows y anirem a configuracio, despres anirem a systema y activarem la opcio de escritori remot.
+Per poder connectar-nos des d’un altre equip, primer hem d’activar i configurar l’Escriptori Remot a Windows 11. A continuació t’explico els passos de manera senzilla:
 
-despres casmbiarem el nom de la maquina, per fer això anirem a inicio y a adalt ens sortira el nom del nostre ordinador actual y una opcio q iu "cambia nom" cliquem en alla y posarem un nom facil, jo he posat hola
+**1. Activar Escriptori Remot:**
 
-despres tornarem a les opcions de escritori remot, en alla anirem a usuaris de escritorio remoto. s'ens obrira una finestra y a on posa escribe los nombres del objeto  posarem:
+- Obrim Configuració → Sistema → Escriptori remot.
+
+- Activem l’opció Habilitar l’escriptori remot.
+
+![](img/image01.png)
+
+**2. Canviar el nom de l’ordinador:**
+
+- Anem a Inici i a la part superior veurem el nom actual de l’ordinador.
+
+- Cliquem a Canviar nom i escrivim un nom fàcil de recordar, per exemple HOLA.
+
+- Reiniciem l’ordinador si ens ho demana.
+  
+![](img/image05.png)
+
+**3. Afegir usuaris autoritzats:**
+
+- Torna a Opcions de l’escriptori remot.
+
+- Fes clic a Usuaris de l’escriptori remot.
+
+- S’obrirà una finestra on podem afegir els usuaris que podran connectar-se.
+
+- Escriu el nom de l’usuari amb el format:
 ```bash
 HOLA\User
 ```
+
+- Prem Acceptar per desar els canvis.
+
+
+![](img/image02.png)
+
+---
+
+## 3) Acceptar certificat i entrar
+Quan intentem connectar-nos per primera vegada amb l’Escriptori Remot, el sistema ens mostrarà un avís de seguretat. Això és normal i serveix per assegurar que la connexió és segura:
+
+1. Apareixerà una finestra amb informació com Assumpte, Emissor i Empremta digital del certificat.
+2. Ens pregunta si volem acceptar el certificat. Cliquem Sí per continuar.
+
+![](img/image03.png)
+
+3. A continuació, ens demanarà les credencials del nostre usuari de Windows.¡
+ - Introduïm nom d’usuari i contrasenya.
+ - Premem Acceptar i ja podrem accedir a l’escriptori remot del Windows 11 des de l’altra màquina.
+
+![](img/image04.png)
+
+---
+
+## 4. Resultat final
+Una vegada fet tot això quedara aixi:
+
+![](img/image06.png)
+
+
+
+
+
