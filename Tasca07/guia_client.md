@@ -4,7 +4,7 @@
 
 ![imatge](img/image01.png)
 
-Cerquem TeamViewer des de qualsevol navegador per poder connectar-nos al client de manera ràpida i segura. Aquesta eina ens permet veure i controlar l’ordinador del client sense necessitat que ell faci configuracions complicades.
+Cerquem TeamViewer des de qualsevol navegador per poder connectar-nos de manera ràpida i segura. Aquesta eina ens permet veure i controlar l’ordinador del client sense necessitat que ell faci configuracions complicades.
 
 ---
 
