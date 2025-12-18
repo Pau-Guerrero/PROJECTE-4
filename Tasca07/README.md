@@ -62,3 +62,7 @@ Un cop seleccionada l’eina:
 
 La tasca consisteix a seleccionar l’eina més adequada per assistència remota immediata i crear documentació clara tant per tècnics com per clients. L’objectiu és millorar l’eficiència del suport i garantir una experiència segura i fàcil per als usuaris finals.
 
+# Guies
+[Analisi](analisi.md)
+[Guia del client](guia_client.md)
+[Guia del tecnic](guia_tecnic.md)
